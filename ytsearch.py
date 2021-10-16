@@ -1,8 +1,9 @@
 # Modified the files of YouTube Search to make it Async Compatible
 
-import urllib.parse
-import aiohttp
 import json
+import urllib.parse
+
+import aiohttp
 
 
 class YoutubeSearch:
