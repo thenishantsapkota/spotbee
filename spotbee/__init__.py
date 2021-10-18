@@ -1,16 +1,14 @@
 import asyncio
 
 import spotipy
-from dotenv import load_dotenv
 from spotipy.oauth2 import SpotifyClientCredentials
-
 from ytsearch import YoutubeSearch
 
-load_dotenv()
 
-
-async def get_tracks_from_playlist( 
-    spotify_client_id: str, spotify_client_secret: str, playlist_url: str,
+async def get_tracks_from_playlist(
+    spotify_client_id: str,
+    spotify_client_secret: str,
+    playlist_url: str,
 ) -> list:
     credentials = SpotifyClientCredentials(spotify_client_id, spotify_client_secret)
     spotify = spotipy.Spotify(client_credentials_manager=credentials)
@@ -47,8 +45,12 @@ async def get_url(song: str) -> str:
     return complete_url
 
 
-async def get_songs(spotify_client_id: str, spotify_client_secret: str, spotify_playlist_link: str) -> tuple:
-    tracks = await get_tracks_from_playlist(spotify_client_id, spotify_client_secret,spotify_playlist_link)
+async def get_songs(
+    spotify_client_id: str, spotify_client_secret: str, spotify_playlist_link: str
+) -> tuple:
+    tracks = await get_tracks_from_playlist(
+        spotify_client_id, spotify_client_secret, spotify_playlist_link
+    )
     tasks = [get_url(track) for track in tracks]
     urls = await asyncio.gather(*tasks)
 
