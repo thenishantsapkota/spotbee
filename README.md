@@ -1,5 +1,10 @@
 # spotbee
 
+This is a module that spits out YouTube URLs from Spotify Playlist URLs
+
+**Why use this?**
+It is asynchronous which makes it compatible to use with Discord Bots.
+
 **Installation**
 
 ```bash
