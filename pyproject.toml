@@ -4,6 +4,14 @@ version = "0.1.0"
 description = "A simple module that converts Spotify Playlists into a list of Youtube URLs"
 authors = ["Nishant Sapkota <snishant306@gmail.com>"]
 license = "MIT"
+readme = "README.md"
+repository = "https://github.com/Samrid-Pandit/nepse-api/"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
