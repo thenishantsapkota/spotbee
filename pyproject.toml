@@ -1,16 +1,13 @@
 [tool.poetry]
-name = "spotify-to-youtube"
+name = "spotbee"
 version = "0.1.0"
-description = "A simple program that converts Spotify Playlists into a list of Youtube songs"
+description = "A simple module that converts Spotify Playlists into a list of Youtube URLs"
 authors = ["Nishant Sapkota <snishant306@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
 spotipy = "^2.19.0"
-python-dotenv = "^0.19.1"
-youtube_dl = "^2021.6.6"
-youtube-search = "^2.1.0"
 aiohttp = "^3.7.4"
 
 [tool.poetry.dev-dependencies]
