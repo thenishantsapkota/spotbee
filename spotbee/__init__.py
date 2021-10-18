@@ -2,7 +2,7 @@ import asyncio
 
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-from ytsearch import YoutubeSearch
+from .ytsearch import YoutubeSearch
 
 
 async def get_tracks_from_playlist(
