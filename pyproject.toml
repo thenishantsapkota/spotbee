@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "spotbee"
-version = "0.2.0"
+version = "0.3.0"
 description = "A simple module that converts Spotify Playlists into a list of Youtube URLs"
 authors = ["Nishant Sapkota <snishant306@gmail.com>"]
 license = "MIT"
