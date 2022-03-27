@@ -1,58 +1,30 @@
 import asyncio
 
-import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
+from spotbee.spotify import SpotifyHandler
 
 from .ytsearch import YoutubeSearch
 
 
-async def get_tracks_from_playlist(
-    spotify_client_id: str,
-    spotify_client_secret: str,
-    playlist_url: str,
-) -> list:
-    credentials = SpotifyClientCredentials(spotify_client_id, spotify_client_secret)
-    spotify = spotipy.Spotify(client_credentials_manager=credentials)
+class SpotBee:
+    def __init__(self, client_id: str, client_secret: str) -> None:
+        self.spotify_handler = SpotifyHandler(client_id, client_secret)
 
-    results = spotify.playlist_tracks(
-        playlist_id=playlist_url, additional_types=("track",)
-    )
-    trackList = []
+    async def _get_urls(self, song: str) -> str:
+        results = await YoutubeSearch.search(song, max_results=1)
+        base_url = "https://www.youtube.com/"
 
-    for i in results["items"]:
+        complete_url = base_url + results[0]["url_suffix"]
 
-        if i["track"]["artists"].__len__() == 1:
-            trackList.append(
-                i["track"]["name"] + " - " + i["track"]["artists"][0]["name"]
-            )
-        else:
-            nameString = ""
-            for index, b in enumerate(i["track"]["artists"]):
-                nameString += b["name"]
-                if i["track"]["artists"].__len__() - 1 != index:
-                    nameString += ", "
-            trackList.append(i["track"]["name"] + " - " + nameString)
+        return complete_url
 
-    return trackList
+    async def get_youtube_urls(self, spotify_link: str) -> tuple:
+        tracks = await self.spotify_handler.handle_spotify_url(spotify_link)
+        tasks = [self._get_urls(track) for track in tracks]
+        urls = await asyncio.gather(*tasks)
 
+        return urls
 
-async def get_url(song: str) -> str:
-    results = await YoutubeSearch.search(song, max_results=1)
+    async def get_track_titles(self, spotify_link: str) -> list:
+        tracks = await self.spotify_handler.handle_spotify_url(spotify_link)
 
-    baseurl = "https://www.youtube.com/"
-
-    complete_url = baseurl + results[0]["url_suffix"]
-
-    return complete_url
-
-
-async def get_songs(
-    spotify_client_id: str, spotify_client_secret: str, spotify_playlist_link: str
-) -> tuple:
-    tracks = await get_tracks_from_playlist(
-        spotify_client_id, spotify_client_secret, spotify_playlist_link
-    )
-    tasks = [get_url(track) for track in tracks]
-    urls = await asyncio.gather(*tasks)
-
-    return urls
+        return tracks
