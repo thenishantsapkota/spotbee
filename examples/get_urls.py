@@ -2,14 +2,13 @@ import asyncio
 
 import spotbee
 
+instance = spotbee.SpotBee("spotify_client_id", "spotify_client_secret")
 
-async def get_links():
-    urls = await spotbee.get_songs(
-        "spotify_client_id", "spotfiy_client_secret", "spotify_playlist_link"
-    )
+
+async def youtube_urls():
+    urls = await instance.get_youtube_urls("spotify_url")
     # Get Spotify Client ID, Spotify Client Secret from https://developer.spotify.com
     print(urls)
 
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(get_links())
+asyncio.run(youtube_urls())
