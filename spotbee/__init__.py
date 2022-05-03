@@ -4,6 +4,8 @@ from spotbee.spotify import SpotifyHandler
 
 from .ytsearch import YoutubeSearch
 
+__version__ = "1.1.0"
+
 
 class SpotBee:
     def __init__(self, client_id: str, client_secret: str) -> None:
