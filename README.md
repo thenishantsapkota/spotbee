@@ -1,3 +1,4 @@
+![Spotbee Logo](https://cdn.snishant.com.np/r/spotbee.png)
 # spotbee
 
 This is a module that spits out YouTube URLs from Spotify Playlist URLs
