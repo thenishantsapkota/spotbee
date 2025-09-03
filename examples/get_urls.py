@@ -1,6 +1,6 @@
 import asyncio
 
-import spotbee
+import spotbeeV2 as spotbee
 
 instance = spotbee.SpotBee("spotify_client_id", "spotify_client_secret")
 

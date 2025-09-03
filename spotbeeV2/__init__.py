@@ -1,10 +1,10 @@
 import asyncio
 
-from spotbee.spotify import SpotifyHandler
+from spotbeeV2.spotify import SpotifyHandler
 
 from .ytsearch import YoutubeSearch
 
-__version__ = "1.1.0"
+__version__ = "2.0.0"
 
 
 class SpotBee:
