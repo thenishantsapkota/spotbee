@@ -16,7 +16,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-spotipy = "^2.19.0"
+spotipy = "^2.25.2"
 aiohttp = "^3.7.4"
 
 [tool.poetry.group.dev.dependencies]
